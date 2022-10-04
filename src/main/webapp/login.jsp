@@ -4,7 +4,7 @@
     <title>Login</title>
 </head>
 <body><center>
-    <form action="LoginServlet" method="post">
+    <form action="login" method="post">
         Enter username : <input type="text" name="user"><br><br>
         Enter password : <input type="password" name="pass"><br><br>
         <input type="submit" value="login">

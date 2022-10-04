@@ -8,5 +8,21 @@ public class DBManager {
     private static DBManager instance = null;
     private Connection con = null;
 
-
+    private static DBManager getInstance(){
+        if (instance==null){
+            instance=new DBManager();
+        }
+        return instance;
+    }
+    private DBManager(){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping?UseClientEnc=UTF8", "adminshop", "root123.");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public static Connection getConnection(){
+        return getInstance().con;
+    }
 }
