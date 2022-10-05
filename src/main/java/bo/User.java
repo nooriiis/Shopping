@@ -1,18 +1,17 @@
 package bo;
 
 import db.UserDB;
-
 import java.util.Collection;
 
 public class User {
     private String username;
     private String password;
 
-    public static Collection isUser(String username,String password){
+    protected static Collection isUser(String username,String password){
         return UserDB.isUser(username,password);
     }
 
-    public User(String username, String password){
+    protected User(String username, String password){
         this.username=username;
         this.password=password;
     }
@@ -35,6 +34,6 @@ public class User {
 
     @Override
     public String toString(){
-        return "User: "+'\''+"Username" + username+'\''+"Password"+password;
+        return "User: "+'\''+" Username: " + username+'\''+" Password: "+password;
     }
 }

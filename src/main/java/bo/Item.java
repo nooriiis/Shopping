@@ -1,7 +1,6 @@
 package bo;
 
 import db.ItemDB;
-
 import java.util.Collection;
 
 public class Item {
@@ -13,6 +12,10 @@ public class Item {
 
     public static Collection searchItems(String items){
         return ItemDB.searchItems(items);
+    }
+
+    protected Item() {
+
     }
 
     protected Item(int itemId, String itemName, int itemPrice, String itemInfo){
@@ -56,6 +59,6 @@ public class Item {
 
     @Override
     public String toString(){
-        return "Item: "+ itemId +'\''+"Name: " + itemName +'\''+"Price " + itemPrice + "Info: " + itemInfo;
+        return "Item: "+ itemId +'\''+" Name: " + itemName +'\''+" Price: " + itemPrice + " Info: " + itemInfo;
     }
 }
