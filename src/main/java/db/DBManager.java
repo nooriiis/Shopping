@@ -8,6 +8,10 @@ public class DBManager {
     private static DBManager instance = null;
     private Connection con = null;
 
+    public static Connection getConnection(){
+        return getInstance().con;
+    }
+
     private static DBManager getInstance(){
         if (instance==null){
             instance=new DBManager();
@@ -21,8 +25,5 @@ public class DBManager {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
-    public static Connection getConnection(){
-        return getInstance().con;
     }
 }

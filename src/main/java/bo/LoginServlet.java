@@ -17,12 +17,14 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
 
-        Collection collection = UserDB.isUser(username,password);
+        Collection collection = User.isUser(username,password);
         if (collection.isEmpty()){
             response.sendRedirect("login.jsp");
         } else{
+            HttpSession session = request.getSession();
+            session.setAttribute("username",username);
             response.sendRedirect("items.jsp");
         }
-
+        out.close();
     }
 }
