@@ -21,14 +21,14 @@
 </head>
 <body>
 <%
-    if (session.getAttribute("username")==null){
+    if (session.getAttribute("username") == null){
         response.sendRedirect("login.jsp");
     }
 %>
 <h2><%= "Your Shopping Cart"%></h2>
 <%
     ArrayList<CartItem> cartItemsSession = (ArrayList<CartItem>) session.getAttribute("cartList");
-    if (cartItemsSession !=null){
+    if (cartItemsSession != null){
     Collection<ItemInfo> items = ItemHandler.getCartItems(cartItemsSession);
     Iterator<ItemInfo> it = items.iterator();
     for (; it.hasNext();){
