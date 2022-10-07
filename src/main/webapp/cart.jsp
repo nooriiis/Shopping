@@ -12,7 +12,7 @@
         .button {
             background-color: #3775c5;
             color: white;
-            border: 2px solid black;
+            border: 2px #3775c5;
             margin: 2px;
             padding: 3px;
         }
@@ -25,7 +25,8 @@
         response.sendRedirect("login.jsp");
     }
 %>
-<h2><%= "Your Shopping Cart"%></h2>
+<h2 style="color: #3775c5"><%= "Your Shopping Cart"%></h2><br>
+<hr>
 <%
     ArrayList<CartItem> cartItemsSession = (ArrayList<CartItem>) session.getAttribute("cartList");
     if (cartItemsSession != null){
