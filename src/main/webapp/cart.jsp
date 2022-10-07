@@ -6,24 +6,39 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="ui.ItemInfo" %>
+<%@ page import="bo.ItemHandler" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Cart</title>
 </head>
 <body>
+
+
 <%
-    if (session.getAttribute("username")==null){
+    if (request.getSession().getAttribute("username")==null){
         response.sendRedirect("login.jsp");
     }
 %>
 <h2><%= "Your Shopping Cart"%></h2>
-<% ArrayList<CartItem> cartItemSession = (ArrayList<CartItem>) session.getAttribute("cartList");
-   List<CartItem> cartItems = (List<CartItem>) CartItem.searchItemsById(cartItemSession);
-   request.setAttribute("cart_list",cartItemSession);
-    for(CartItem c : cartItems){%>
-<h2><%=c.getItemPrice()%></h2>
-    <%}%>
+
+<%  if (session.getAttribute("cartList")!=null){
+
+    ArrayList<CartItem> cartItemSession = (ArrayList<CartItem>) session.getAttribute("cartList");
+    List<CartItem> cartItems = (List<CartItem>) CartItem.searchItemsById(cartItemSession);
+    request.getSession().setAttribute("cart_list",cartItemSession);
+
+    for(CartItem c : cartItemSession){%>
+<table><th><%="Item name: "+c.getItemName()%>&emsp;</th>
+    <th><%="Item price: "+c.getItemPrice()%>&emsp;</th>
+    <th><%="Item info:"+c.getItemInfo()%>&emsp;</th>
+    <th><%="Quantity: " + c.getCartItemQuantity()%></th>
+</table>
+
+<%}%>
+<%}
+else %>
+
 </body>
 </html>
 
