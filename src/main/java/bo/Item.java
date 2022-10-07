@@ -14,7 +14,7 @@ public class Item {
         return ItemDB.searchItems(items);
     }
 
-    protected Item() {
+    protected Item(){
 
     }
 
@@ -23,6 +23,12 @@ public class Item {
         this.itemName = itemName;
         this.itemPrice = itemPrice;
         this.itemInfo = itemInfo;
+    }
+
+    protected Item(int itemId, String itemName, int itemPrice){
+        this.itemId = itemId;
+        this.itemName = itemName;
+        this.itemPrice = itemPrice;
     }
 
     public int getItemId() {

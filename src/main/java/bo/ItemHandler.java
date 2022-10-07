@@ -16,4 +16,14 @@ public class ItemHandler {
         }
         return items;
     }
+
+    public static Collection<ItemInfo> getCartItems(ArrayList<CartItem> cartItemSession){
+        Collection c = CartItem.searchItemsById(cartItemSession);
+        ArrayList<ItemInfo> cartItems = new ArrayList<ItemInfo>();
+        for (Iterator it = c.iterator(); it.hasNext();){
+            CartItem item = (CartItem) it.next();
+            cartItems.add(new ItemInfo(item.getItemId(), item.getCartItemQuantity(), item.getItemName(), item.getItemPrice()));
+        }
+        return cartItems;
+    }
 }

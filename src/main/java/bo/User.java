@@ -1,13 +1,12 @@
 package bo;
 
 import db.UserDB;
-import java.util.Collection;
 
 public class User {
     private String username;
     private String password;
 
-    protected static Collection isUser(String username,String password){
+    protected static boolean isUser(String username,String password){
         return UserDB.isUser(username,password);
     }
 

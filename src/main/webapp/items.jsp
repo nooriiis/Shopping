@@ -3,6 +3,7 @@
 <%@ page import="bo.ItemHandler" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <style>
@@ -17,17 +18,12 @@
     <title>Products</title>
 </head>
 <body>
-<%
-    if (session.getAttribute("username")==null){
-        response.sendRedirect("login.jsp");
-    }
-%>
 <h2><%= "Electronics E-Commerce" %></h2>
 <% Collection<ItemInfo> items = ItemHandler.getItems("electronic");
     Iterator<ItemInfo> it = items.iterator();
     for (; it.hasNext();){
         ItemInfo item = it.next(); %>
-<h4><%= "Product: " + item.getItemName() + "   Price: " +  item.getItemPrice() + " Description: " + item.getItemInfo()%>
+<h4><%= "Product: " + item.getItemName() + "   Price: $" +  item.getItemPrice() + " Description: " + item.getItemInfo()%>
     <a href="cart?id=<%= item.getItemId()%>" class="button">Add to Cart</a>
     <hr>
 </h4>

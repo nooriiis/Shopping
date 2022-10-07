@@ -5,17 +5,17 @@ import db.CartDB;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class CartItem extends Item{
+public class CartItem extends Item {
 
     private int cartItemQuantity;
 
-    protected CartItem() {
-
+    protected  CartItem(){
+        super();
     }
 
-    protected CartItem(int itemId, String itemName, int itemPrice, int quantity) {
-        super(itemId,itemName,itemPrice,"");
-        cartItemQuantity = quantity;
+    public CartItem(int cartItemId, int cartItemQuantity, String cartItemName, int cartItemPrice) {
+        super(cartItemId,cartItemName,cartItemPrice);
+        this.cartItemQuantity = cartItemQuantity;
     }
 
     public static Collection searchItemsById(ArrayList<CartItem> items){
@@ -32,6 +32,6 @@ public class CartItem extends Item{
 
     @Override
     public String toString(){
-        return "Cart Item: "+ super.getItemId() +'\''+" Quantity: " + cartItemQuantity +'\''+" Name: " + super.getItemName() + " Price: " + super.getItemPrice();
+        return "ID: "+ super.getItemId() +'\''+" Quantity: " + cartItemQuantity;
     }
 }

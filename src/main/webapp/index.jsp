@@ -1,9 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%
+<%--<%
     if (session.getAttribute("username")==null){
         response.sendRedirect("login.jsp");
     }
-%>
+%>--%>
+<% response.sendRedirect("items.jsp"); %>
 <!DOCTYPE html>
 <html>
 <head>

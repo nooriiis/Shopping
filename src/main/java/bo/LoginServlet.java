@@ -1,11 +1,9 @@
 package bo;
 
-import db.UserDB;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Collection;
 
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
@@ -17,13 +15,13 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
 
-        Collection collection = User.isUser(username,password);
-        if (collection.isEmpty()){
+        Boolean logInBoolean = User.isUser(username,password);
+        if (logInBoolean==false){
             response.sendRedirect("login.jsp");
         } else{
             HttpSession session = request.getSession();
             session.setAttribute("username",username);
-            response.sendRedirect("items.jsp");
+            response.sendRedirect("cart.jsp");
         }
         out.close();
     }

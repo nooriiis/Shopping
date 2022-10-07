@@ -6,6 +6,7 @@ public class ItemInfo {
     private String itemName;
     private int itemPrice;
     private String itemInfo;
+    private int itemQuantity;
 
     public ItemInfo(int itemId, String itemName, int itemPrice, String itemInfo) {
         this.itemId = itemId;
@@ -14,35 +15,30 @@ public class ItemInfo {
         this.itemInfo = itemInfo;
     }
 
-    public int getItemId() {
-        return itemId;
+    public ItemInfo(int itemId, int itemQuantity, String itemName, int itemPrice) {
+        this.itemId = itemId;
+        this.itemQuantity = itemQuantity;
+        this.itemName = itemName;
+        this.itemPrice = itemPrice;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public int getItemId() {
+        return itemId;
     }
 
     public String getItemName() {
         return itemName;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
     public int getItemPrice() {
         return itemPrice;
-    }
-
-    public void setItemPrice(int itemPrice) {
-        this.itemPrice = itemPrice;
     }
 
     public String getItemInfo() {
         return itemInfo;
     }
 
-    public void setItemInfo(String itemInfo) {
-        this.itemInfo = itemInfo;
+    public int getItemQuantity() {
+        return itemQuantity;
     }
 }
