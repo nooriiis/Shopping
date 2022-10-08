@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         .button {
             background-color: #3775c5;
@@ -34,14 +35,21 @@
     Iterator<ItemInfo> it = items.iterator();
     for (; it.hasNext();){
         ItemInfo item = it.next(); %>
-<h4><%= "Quantity: " + item.getItemQuantity() + " Item: " +  item.getItemName() + " Price: $" + item.getItemPrice()%></h4>
-    <hr>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"><%=item.getItemName()%></h5>
+        <p class="card-text"><%="Price: $" +  item.getItemPrice() %></p>
+        <p class="card-text"><%="Quantity: " + item.getItemQuantity()%></p>
+        <a href="cart?id=<%= item.getItemId()%>" class="btn btn-primary btn-sm">Add to Cart</a>
+    </div>
+</div>
+
 <%}}
 else{%>
 <h4><%= "No items added to the shopping Cart."%></h4>
 <%}%>
 <br>
-<a href="items.jsp" class="button">Continue Shopping</a>
-<a href="cart.jsp" class="button">Checkout</a>
+<a href="items.jsp" class="btn btn-secondary btn-lg">Continue Shopping</a>
+<a href="cart.jsp" class="btn btn-primary btn-lg">Checkout</a>
 </body>
 </html>
