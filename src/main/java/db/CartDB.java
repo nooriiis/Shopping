@@ -9,12 +9,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Vector;
 
+/*
+    @authors Danilo Perovic & Zaed Noori
+*/
+
 public class CartDB extends bo.CartItem{
 
     private CartDB(int itemId, int quantity, String itemName, int itemPrice) {
         super(itemId,quantity,itemName,itemPrice);
     }
 
+
+    /*
+@param (ArrayList<CartItem>) cartList - the list of items to be added to the cart
+*/
     // make a collection of the items in the DB from the given cartlist
     public static Collection searchItemById(ArrayList<CartItem> cartList){
         // Vector is used to add the items from the db to a collection

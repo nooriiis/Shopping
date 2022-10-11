@@ -5,6 +5,10 @@ import db.CartDB;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/*
+    @authors Danilo Perovic & Zaed Noori
+*/
+
 public class CartItem extends Item {
 
     private int cartItemQuantity;

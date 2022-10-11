@@ -5,9 +5,16 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/*
+    @authors Danilo Perovic & Zaed Noori
+*/
+
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
-
+    /*
+    @param (HttpServletRequest) request
+    @param (HttpServletResponse) response
+ */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");

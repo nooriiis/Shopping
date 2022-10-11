@@ -3,6 +3,10 @@ package bo;
 import db.ItemDB;
 import java.util.Collection;
 
+/*
+    @authors Danilo Perovic & Zaed Noori
+*/
+
 public class Item {
 
     private int itemId;

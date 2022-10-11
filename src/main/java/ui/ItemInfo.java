@@ -1,5 +1,9 @@
 package ui;
 
+/*
+    @authors Danilo Perovic & Zaed Noori
+*/
+
 public class ItemInfo {
 
     private int itemId;

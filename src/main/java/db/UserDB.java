@@ -2,12 +2,20 @@ package db;
 
 import java.sql.*;
 
+/*
+    @authors Danilo Perovic & Zaed Noori
+*/
+
 public class UserDB extends bo.User{
 
     private UserDB(String username, String password) {
         super(username, password);
     }
 
+        /*
+@param (String) username - The username
+@param (String) password - The password 
+ */
     public static boolean isUser(String username, String password){
         String databaseUsername = "";
         String databasePassword = "";

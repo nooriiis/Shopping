@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/*
+    @authors Danilo Perovic & Zaed Noori
+*/
+
 public class DBManager {
     private static DBManager instance = null;
     private Connection con = null;

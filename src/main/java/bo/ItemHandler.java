@@ -5,8 +5,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+/*
+    @authors Danilo Perovic & Zaed Noori
+*/
+
 public class ItemHandler {
 
+    /*
+@param (String) s - the item to be searched
+ */
     public static Collection<ItemInfo> getItems(String s){
         //Get collection of items from DB
         Collection c = Item.searchItems(s);
@@ -21,7 +28,9 @@ public class ItemHandler {
         }
         return items;
     }
-
+    /*
+@param (ArrayList<CartItem>) cartItemSession - the list of items from current session
+ */
     public static Collection<ItemInfo> getCartItems(ArrayList<CartItem> cartItemSession){
         //Get collection of items from DB
         Collection c = CartItem.searchItemsById(cartItemSession);

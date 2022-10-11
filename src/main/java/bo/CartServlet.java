@@ -6,9 +6,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+/*
+    @authors Danilo Perovic & Zaed Noori
+*/
 @WebServlet(name = "CartServlet", value = "/cart")
 public class CartServlet extends HttpServlet {
 
+    /*
+    @param (HttpServletRequest) request
+    @param (HttpServletResponse) response
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");

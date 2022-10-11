@@ -2,6 +2,10 @@ package bo;
 
 import db.UserDB;
 
+/*
+    @authors Danilo Perovic & Zaed Noori
+*/
+
 public class User {
     private String username;
     private String password;
