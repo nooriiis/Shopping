@@ -7,15 +7,6 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
-        .button {
-            background-color: #3775c5;
-            color: white;
-            border: 2px #3775c5;
-            margin: 2px;
-            padding: 3px;
-        }
-    </style>
     <title>Products</title>
 </head>
 <body>
@@ -34,31 +25,29 @@ else{
 %>
 <form action="items.jsp" method="post">
     <input type="hidden" name="Logout" value="Logout">
-    <input type="submit" class="btn btn-secondary" value="Logout">
+    <input type="submit" class="btn btn-dark" value="Logout">
 </form>
 <%}%>
-
 <hr>
 <div class="container">
     <div class="row">
-<% Collection<ItemInfo> items = ItemHandler.getItems("electronic");
-    Iterator<ItemInfo> it = items.iterator();
-    for (; it.hasNext();){
-        ItemInfo item = it.next(); %>
+        <% Collection<ItemInfo> items = ItemHandler.getItems("electronic");
+            Iterator<ItemInfo> it = items.iterator();
+            for (; it.hasNext();){
+                ItemInfo item = it.next(); %>
         <div class="col-sm">
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title"><%=item.getItemName()%></h5>
-            <p class="card-text"><%="Price: $" +  item.getItemPrice() %></p>
-            <p class="card-text"><%=" Description: " + item.getItemInfo() %></p>
-            <%if (request.getParameter("Logout")==null){ %>
-            <a href="cart?id=<%= item.getItemId()%>" class="btn btn-primary btn-sm">Add to Cart</a>
-            <% }%>
-
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><%=item.getItemName()%></h5>
+                    <p class="card-text"><%="Price: $" +  item.getItemPrice() %></p>
+                    <p class="card-text"><%=" Description: " + item.getItemInfo() %></p>
+                    <%if (request.getParameter("Logout")==null){ %>
+                    <a href="cart?id=<%= item.getItemId()%>" class="btn btn-primary btn-sm">Add to Cart</a>
+                    <% }%>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<%}%>
+        <%}%>
     </div>
 </div>
 <a href="cart.jsp" class="btn btn-primary btn-lg">Go to Cart</a>

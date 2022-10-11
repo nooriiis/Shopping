@@ -9,15 +9,6 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
-        .button {
-            background-color: #3775c5;
-            color: white;
-            border: 2px #3775c5;
-            margin: 2px;
-            padding: 3px;
-        }
-    </style>
     <title>Shopping Cart</title>
 </head>
 <body>
@@ -27,7 +18,11 @@
     }
 %>
 <h2 style="color: #3775c5"><%= "Your Shopping Cart"%></h2><br>
-
+<%
+    if (session.getAttribute("username") != null){%>
+<a href="logout.jsp" class="btn btn-dark" role="button">Logout</a>
+<%}%>
+<hr>
 <table class="table">
     <thead>
     <tr>
@@ -35,6 +30,7 @@
         <th scope="col">Name</th>
         <th scope="col">Price</th>
         <th scope="col">Quantity</th>
+        <th scope="col">Remove</th>
     </tr>
     </thead>
 
@@ -53,6 +49,7 @@
                 <td><%=item.getItemName() %></td>
                 <td><%=item.getItemPrice() %></td>
                 <td><%=item.getItemQuantity() %></td>
+                <td><a href="cart?action=remove&id=<%= item.getItemId()%>" class="btn btn-danger">Remove from Cart</a></td>
             </tr>
         <%totalPrice += (item.getItemPrice()*item.getItemQuantity());%>
 <%}%>  </tbody>

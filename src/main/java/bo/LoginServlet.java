@@ -5,28 +5,26 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/*
-    @authors Danilo Perovic & Zaed Noori
-*/
-
+/**
+ * This Servlet handles requests and responses related to the Login process of this application.
+ *
+ * @author Zaed Noori zaedn@kth.se, Danilo Perovic perovic@kth.se
+ */
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
-    /*
-    @param (HttpServletRequest) request
-    @param (HttpServletResponse) response
- */
+
+    /**
+     * Checks if the input of the request matches any sets of the database, and sens the User to the Login page if the credentials of the
+     * username and password fails, or the main page if it is successful.
+     * @param request the request sent to the Servlet.
+     * @param response the response sent from the Servlet.
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
-
         PrintWriter out = response.getWriter();
-
-        // Get the parameters sent from the login.jsp
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
-
-        // Look in DB if user doesn't exists or is incorrect try again to login
-        // else user exists and is correct redirect to cart
         Boolean logInBoolean = User.isUser(username,password);
         if (logInBoolean==false){
             response.sendRedirect("login.jsp");
