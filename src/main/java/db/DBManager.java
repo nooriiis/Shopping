@@ -19,6 +19,7 @@ public class DBManager {
         return instance;
     }
     private DBManager(){
+        //Connect to db
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping?UseClientEnc=UTF8", "adminshop", "root123.");

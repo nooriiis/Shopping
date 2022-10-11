@@ -13,9 +13,13 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html");
 
         PrintWriter out = response.getWriter();
+
+        // Get the parameters sent from the login.jsp
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
 
+        // Look in DB if user doesn't exists or is incorrect try again to login
+        // else user exists and is correct redirect to cart
         Boolean logInBoolean = User.isUser(username,password);
         if (logInBoolean==false){
             response.sendRedirect("login.jsp");

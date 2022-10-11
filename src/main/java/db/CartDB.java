@@ -15,15 +15,22 @@ public class CartDB extends bo.CartItem{
         super(itemId,quantity,itemName,itemPrice);
     }
 
+    // make a collection of the items in the DB from the given cartlist
     public static Collection searchItemById(ArrayList<CartItem> cartList){
+        // Vector is used to add the items from the db to a collection
         Vector v = new Vector();
         try {
+            //If list is empty return empty
             if (cartList.size()>0) {
+                //Loop through every item in the parameter list
                 for (CartItem c : cartList) {
+                    //SQL query
                     Connection con = DBManager.getConnection();
                     PreparedStatement pre = con.prepareStatement("SELECT * FROM product WHERE id = ?");
                     pre.setInt(1,c.getItemId());
                     ResultSet res = pre.executeQuery();
+
+                    // Create new CartDB with the values from DB and add it to the list
                     while (res.next()) {
                         v.addElement(new CartDB(res.getInt("id"), c.getCartItemQuantity(), res.getString("name"), res.getInt("price")));
                     }
