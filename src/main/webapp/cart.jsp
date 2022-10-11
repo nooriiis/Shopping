@@ -58,7 +58,7 @@
 <h3>Total Price: <%=totalPrice %> </h3>
 <%}
 else{%>
-<h4><%= "No items added to the shopping Cart."%></h4>
+<h5><%= "No items added to the shopping Cart."%></h5>
 <%}%>
 
 <br>

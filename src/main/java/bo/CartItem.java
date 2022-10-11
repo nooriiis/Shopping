@@ -28,7 +28,7 @@ public class CartItem extends Item {
      * @param cartItemName the name of the CartItem.
      * @param cartItemPrice the price of the CartItem.
      */
-    public CartItem(int cartItemId, int cartItemQuantity, String cartItemName, int cartItemPrice) {
+    protected CartItem(int cartItemId, int cartItemQuantity, String cartItemName, int cartItemPrice) {
         super(cartItemId,cartItemName,cartItemPrice);
         this.cartItemQuantity = cartItemQuantity;
     }
