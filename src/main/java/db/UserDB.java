@@ -1,17 +1,30 @@
 package db;
 
 import java.sql.*;
-import java.util.Collection;
-import java.util.Vector;
 
+/**
+ * This DB class handles queries related to the Login of the application.
+ *
+ * @author Zaed Noori zaedn@kth.se, Danilo Perovic perovic@kth.se
+ */
 public class UserDB extends bo.User{
 
+    /**
+     * Creates a new instance of User.
+     * @param username the username.
+     * @param password the name of the password.
+     */
     private UserDB(String username, String password) {
         super(username, password);
     }
 
-    public static Collection isUser(String username,String password){ // Ändra collection
-        Vector v = new Vector();
+    /**
+     * Searches through the database and checks if the credentials of the username and password is found in the database.
+     * @param username the input username String.
+     * @param password the input password String.
+     * @return true if the User is found in the database, false if not.
+     */
+    public static boolean isUser(String username, String password){
         String databaseUsername = "";
         String databasePassword = "";
         try {
@@ -24,17 +37,18 @@ public class UserDB extends bo.User{
             while (res.next()) {
                 databaseUsername = res.getString("username");
                 databasePassword = res.getString("password");
-                v.addElement(new UserDB(res.getString("username"), res.getString("password")));
             }
             if (username.equals(databaseUsername) && password.equals(databasePassword)){
-                v.addElement(new UserDB(databaseUsername,databasePassword));
+                System.out.println("Successful Login!");
+                return true;
             }
             else {
-                return new Vector();
+                System.out.println("Incorrect Password");
+                return false;
             }
         } catch (SQLException e){
             e.printStackTrace();
         }
-        return v;
+        return false;
     }
 }
