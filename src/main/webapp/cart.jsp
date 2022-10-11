@@ -28,30 +28,39 @@
 %>
 <h2 style="color: #3775c5"><%= "Your Shopping Cart"%></h2><br>
 <hr>
-<div class="container">
-    <div class="row">
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+    </tr>
+    </thead>
+
+    <tbody>
 <%
+
     ArrayList<CartItem> cartItemsSession = (ArrayList<CartItem>) session.getAttribute("cartList");
     if (cartItemsSession != null){
     Collection<ItemInfo> items = ItemHandler.getCartItems(cartItemsSession);
     Iterator<ItemInfo> it = items.iterator();
-    for (; it.hasNext();){
+    int totalPrice=0;
+    for (int i=1; it.hasNext();i++){
         ItemInfo item = it.next();%>
-    <div class="col-sm">
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title"><%=item.getItemName()%></h5>
-        <p class="card-text"><%="Price: $" +  item.getItemPrice() %></p>
-        <p class="card-text"><%="Quantity: " + item.getItemQuantity()%></p>
+            <tr>
+                <th scope="row"><%=i%></th>
+                <td><%=item.getItemName() %></td>
+                <td><%=item.getItemPrice() %></td>
+                <td><%=item.getItemQuantity() %></td>
+            </tr>
+        <%totalPrice += (item.getItemPrice()*item.getItemQuantity());%>
+<%}%>  </tbody>
 
-    </div>
-</div>
-    </div>
-
-<%}%>
-</div>
-    <h3>Total price: <%%> </h3>
-</div> <%}
+        </table>
+<h3>Total Price: <%=totalPrice %> </h3>
+<%}
 else{%>
 <h4><%= "No items added to the shopping Cart."%></h4>
 <%}%>
