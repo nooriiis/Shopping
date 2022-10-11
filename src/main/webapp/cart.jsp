@@ -27,7 +27,6 @@
     }
 %>
 <h2 style="color: #3775c5"><%= "Your Shopping Cart"%></h2><br>
-<hr>
 
 <table class="table">
     <thead>
